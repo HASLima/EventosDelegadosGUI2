@@ -20,10 +20,10 @@ namespace EventosDelegadosGUI2
             view = new View(model);
             model = new Model(view);
 
-            view.UtilizadorClicouEmSubmeter += UtilizadorClicouEmSubmeter;
-            view.UtilizadorClicouEmVerificar += UtilizadorClicouEmVerificarSalvoConduto;
-            model.SalvoCondutoCriado += view.SalvoCondutoCriado;
-            model.SalvoCondutoVerificado += view.SalvoCondutoVerificado;
+            view.UtilizadorClicouEmSubmeter += PrecisoSubmeterSalvoConduto;
+            view.UtilizadorClicouEmVerificar += PrecisoVerificarSalvoConduto;
+            model.SalvoCondutoCriado += view.InformarSalvoCondutoCriado;
+            model.SalvoCondutoVerificado += view.InformarSalvoCondutoVerificado;
             
         }
 
@@ -32,12 +32,12 @@ namespace EventosDelegadosGUI2
             view.ActivarUI();
         }
         
-        public void UtilizadorClicouEmSubmeter(string origem, string destino)
+        public void PrecisoSubmeterSalvoConduto(string origem, string destino)
         {
             model.CriarNovoSalvoConduto(origem, destino);
         }
 
-        public void UtilizadorClicouEmVerificarSalvoConduto(string referencia)
+        public void PrecisoVerificarSalvoConduto(string referencia)
         {
             model.VerificarSalvoConduto(referencia);
         }

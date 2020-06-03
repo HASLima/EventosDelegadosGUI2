@@ -37,30 +37,25 @@ namespace EventosDelegadosGUI2
             janela = new Form1();
             janela.View = this;
 
-            janela.UtilizadorClicouEmNovoSalvoConduto += UtilizadorClicouEmNovoSalvoConduto;
-            janela.UtilizadorClicouEmVerificarSalvoConduto += UtilizadorClicouEmVerificarSalvoConduto;
+            janela.UtilizadorClicouEmNovoSalvoConduto += AbrirJanelaNovoSalvoConduto;
+            janela.UtilizadorClicouEmVerificarSalvoConduto += AbrirJanelaVerificarSalvoConduto;
 
             janela.ShowDialog();
 
         }
 
-        public void UtilizadorClicouEmNovoSalvoConduto(object fonte, System.EventArgs args)
+        public void AbrirJanelaNovoSalvoConduto(object fonte, System.EventArgs args)
         {
             NovoSalvoConduto_Form novoSalvoConduto_Form = new NovoSalvoConduto_Form();
             novoSalvoConduto_Form.View = this;
             novoSalvoConduto_Form.ShowDialog();
         }
 
-        public void UtilizadorClicouEmVerificarSalvoConduto(object fonte, System.EventArgs args)
+        public void AbrirJanelaVerificarSalvoConduto(object fonte, System.EventArgs args)
         {
             VerificarSalvoConduto_Form verificarSalvoConduto_Form = new VerificarSalvoConduto_Form();
             verificarSalvoConduto_Form.View = this;
             verificarSalvoConduto_Form.ShowDialog();
-        }
-
-        public void CliqueEmVerificarSalvoConduto(string referencia)
-        {
-            UtilizadorClicouEmVerificar(referencia);
         }
 
         public void CliqueEmSubmeter(string origem, string destino)
@@ -73,7 +68,7 @@ namespace EventosDelegadosGUI2
             UtilizadorClicouEmVerificar(referencia);
         }
 
-        public void SalvoCondutoVerificado(bool encontrado, string origem, string destino, string referencia, bool valido)
+        public void InformarSalvoCondutoVerificado(bool encontrado, string origem, string destino, string referencia, bool valido)
         {
             if (encontrado)
                 if (valido)
@@ -84,7 +79,7 @@ namespace EventosDelegadosGUI2
                 System.Windows.Forms.MessageBox.Show(String.Format("A referência {0} não consta no sistema!", referencia),"Salvo-Conduto NÃO encontrado");
         }
 
-        public void SalvoCondutoCriado(string origem, string destino, string referencia)
+        public void InformarSalvoCondutoCriado(string origem, string destino, string referencia)
         {
             System.Windows.Forms.MessageBox.Show(String.Format("Foi registado o Salvo-Conduto!\nOrigem: {0}\nDestino: {1}\nReferencia: {2}", origem, destino, referencia), "Novo Registo");
         }

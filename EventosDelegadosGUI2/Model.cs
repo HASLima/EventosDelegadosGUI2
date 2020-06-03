@@ -22,9 +22,6 @@ namespace EventosDelegadosGUI2
         {
             view = v;
             salvoCondutos = new List<SalvoConduto>();
-
-
-            
         }
 
         public int LastIdIssued()

@@ -29,7 +29,7 @@ namespace EventosDelegadosGUI2
 
         private void verificarSalvoConduto_button_Click(object sender, EventArgs e)
         {
-           view.CliqueEmVerificar(referencia_Textbox.Text);
+            view.CliqueEmVerificar(referencia_Textbox.Text);
             Close();
         }
     }
