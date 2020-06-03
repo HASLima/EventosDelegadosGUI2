@@ -9,6 +9,7 @@ namespace EventosDelegadosGUI2
 {
     public class View
     {
+
         private Model model;
         private Form1 janela;
 
