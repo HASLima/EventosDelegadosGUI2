@@ -6,21 +6,28 @@ using System.Threading.Tasks;
 
 namespace EventosDelegadosGUI2
 {
+    //Esta classe pertecence ao componente Model
     class SalvoConduto
     {
-        int id;
-        string origem;
-        string destino;
-        string referencia;
+        private int id;
+        private string origem;
+        private string destino;
+        private string referencia;
         private bool valido;
 
-        public SalvoConduto(string origem, string destino, ref Model model)
+
+
+
+
+
+        public SalvoConduto(string origem, string destino, int lastIdIssued)
         {
-            Id = model.LastIdIssued() + 1;
+            Id = lastIdIssued + 1;
             Origem = origem;
             Destino = destino;
             Referencia = DefineReferencia();
             Valido = true;
+            System.Windows.Forms.Clipboard.SetText(Referencia);
         }
 
         public int Id

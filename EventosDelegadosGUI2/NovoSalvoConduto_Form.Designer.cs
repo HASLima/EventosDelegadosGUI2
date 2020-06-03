@@ -28,23 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.criarSalvoConduto_button = new System.Windows.Forms.Button();
+            this.submeter_button = new System.Windows.Forms.Button();
             this.origem_Label = new System.Windows.Forms.Label();
             this.origem_Textbox = new System.Windows.Forms.TextBox();
             this.destino_Textbox = new System.Windows.Forms.TextBox();
             this.destino_Label = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // criarSalvoConduto_button
+            // submeter_button
             // 
-            this.criarSalvoConduto_button.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.criarSalvoConduto_button.Location = new System.Drawing.Point(319, 5);
-            this.criarSalvoConduto_button.Name = "criarSalvoConduto_button";
-            this.criarSalvoConduto_button.Size = new System.Drawing.Size(150, 54);
-            this.criarSalvoConduto_button.TabIndex = 1;
-            this.criarSalvoConduto_button.Text = "Criar Salvo-Conduto";
-            this.criarSalvoConduto_button.UseVisualStyleBackColor = true;
-            this.criarSalvoConduto_button.Click += new System.EventHandler(this.criarSalvoConduto_button_Click);
+            this.submeter_button.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.submeter_button.Location = new System.Drawing.Point(319, 5);
+            this.submeter_button.Name = "submeter_button";
+            this.submeter_button.Size = new System.Drawing.Size(150, 54);
+            this.submeter_button.TabIndex = 1;
+            this.submeter_button.Text = "Submeter";
+            this.submeter_button.UseVisualStyleBackColor = true;
+            this.submeter_button.Click += new System.EventHandler(this.submeter_button_Click);
             // 
             // origem_Label
             // 
@@ -91,7 +91,7 @@
             this.Controls.Add(this.destino_Label);
             this.Controls.Add(this.origem_Textbox);
             this.Controls.Add(this.origem_Label);
-            this.Controls.Add(this.criarSalvoConduto_button);
+            this.Controls.Add(this.submeter_button);
             this.Name = "NovoSalvoConduto_Form";
             this.Text = "NovoSalvoConduto_Form";
             this.ResumeLayout(false);
@@ -101,7 +101,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button criarSalvoConduto_button;
+        private System.Windows.Forms.Button submeter_button;
         private System.Windows.Forms.Label origem_Label;
         private System.Windows.Forms.TextBox origem_Textbox;
         private System.Windows.Forms.TextBox destino_Textbox;

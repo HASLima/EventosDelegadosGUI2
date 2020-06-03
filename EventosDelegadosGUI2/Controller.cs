@@ -20,23 +20,29 @@ namespace EventosDelegadosGUI2
             view = new View(model);
             model = new Model(view);
 
-            view.UtilizadorClicouEmNovoSalvoConduto += UtilizadorClicouEmNovoSalvoConduto;
+            view.UtilizadorClicouEmSubmeter += UtilizadorClicouEmSubmeter;
+            view.UtilizadorClicouEmVerificar += UtilizadorClicouEmVerificarSalvoConduto;
+            model.SalvoCondutoCriado += view.SalvoCondutoCriado;
+            model.SalvoCondutoVerificado += view.SalvoCondutoVerificado;
+            
         }
 
         public void IniciarPrograma()
         {
             view.ActivarUI();
         }
-
-        public void UtilizadorClicouEmNovoSalvoConduto(object fonte, System.EventArgs args)
+        
+        public void UtilizadorClicouEmSubmeter(string origem, string destino)
         {
-            //Implementar...
-            //model.CriarNovoSalvoConduto();
-            NovoSalvoConduto_Form novoSalvoConduto_Form = new NovoSalvoConduto_Form();
-            novoSalvoConduto_Form.View = view;
-
-            novoSalvoConduto_Form.ShowDialog();
+            model.CriarNovoSalvoConduto(origem, destino);
         }
+
+        public void UtilizadorClicouEmVerificarSalvoConduto(string referencia)
+        {
+            model.VerificarSalvoConduto(referencia);
+        }
+
+        
 
 
     }

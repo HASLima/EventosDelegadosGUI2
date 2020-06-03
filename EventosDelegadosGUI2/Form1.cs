@@ -13,6 +13,15 @@ namespace EventosDelegadosGUI2
     public partial class Form1 : Form
     {
         View view;
+
+        //public event System.EventHandler UtilizadorClicouEmNovoSalvoConduto;
+        public delegate void UtilizadorClicarEmNovoSalvoConduto(object sender, EventArgs e);
+        public event UtilizadorClicarEmNovoSalvoConduto UtilizadorClicouEmNovoSalvoConduto;
+
+        public delegate void UtilizadorClicarEmVerificarSalvoConduto(object sender, EventArgs e);
+        public event UtilizadorClicarEmVerificarSalvoConduto UtilizadorClicouEmVerificarSalvoConduto;
+
+
         public Form1()
         {
             InitializeComponent();
@@ -28,12 +37,12 @@ namespace EventosDelegadosGUI2
 
         private void novoSalvoConduto_button_Click(object sender, EventArgs e)
         {
-            view.CliqueEmNovoSalvoConduto(sender, e); //TODO os argumentos não são necessários. Pensar se vale a pena manter os argumentos como exemplo.
+            UtilizadorClicouEmNovoSalvoConduto(sender, e);
         }
 
         private void verificarSalvoConduto_button_Click(object sender, EventArgs e)
         {
-            
+            UtilizadorClicouEmVerificarSalvoConduto(sender, e);
         }
     }
 }

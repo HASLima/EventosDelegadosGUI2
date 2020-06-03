@@ -9,14 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace EventosDelegadosGUI2
+    //Esta class pertence à View
 {
-    public partial class NovoSalvoConduto_Form : Form
+    public partial class VerificarSalvoConduto_Form : Form
     {
         View view;
 
 
-
-        public NovoSalvoConduto_Form()
+        public VerificarSalvoConduto_Form()
         {
             InitializeComponent();
         }
@@ -27,14 +27,9 @@ namespace EventosDelegadosGUI2
             set { view = value; }
         }
 
-        private void label1_Click(object sender, EventArgs e)
+        private void verificarSalvoConduto_button_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void submeter_button_Click(object sender, EventArgs e)
-        {
-            view.CliqueEmSubmeter(origem_Textbox.Text, destino_Textbox.Text);
+           view.CliqueEmVerificar(referencia_Textbox.Text);
             Close();
         }
     }
