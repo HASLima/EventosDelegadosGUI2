@@ -63,6 +63,7 @@
             this.origem_Textbox.Name = "origem_Textbox";
             this.origem_Textbox.Size = new System.Drawing.Size(223, 19);
             this.origem_Textbox.TabIndex = 3;
+            this.origem_Textbox.Tag = "origem";
             // 
             // destino_Textbox
             // 
@@ -71,6 +72,7 @@
             this.destino_Textbox.Name = "destino_Textbox";
             this.destino_Textbox.Size = new System.Drawing.Size(223, 19);
             this.destino_Textbox.TabIndex = 5;
+            this.destino_Textbox.Tag = "destino";
             // 
             // destino_Label
             // 

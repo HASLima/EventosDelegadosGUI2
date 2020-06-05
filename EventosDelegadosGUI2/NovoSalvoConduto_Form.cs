@@ -18,7 +18,8 @@ namespace EventosDelegadosGUI2
 
         public NovoSalvoConduto_Form()
         {
-            InitializeComponent();
+
+                InitializeComponent();
         }
 
         public View View
@@ -34,8 +35,29 @@ namespace EventosDelegadosGUI2
 
         private void submeter_button_Click(object sender, EventArgs e)
         {
-            view.CliqueEmSubmeter(origem_Textbox.Text, destino_Textbox.Text);
-            Close();
+            try
+            {
+                ValidarDados();
+                view.CliqueEmSubmeter(origem_Textbox.Text, destino_Textbox.Text);
+                Close();
+            }
+            catch (ExceptionFaltaDados ex)
+            {
+                DialogResult caixa;
+                caixa = System.Windows.Forms.MessageBox.Show("Deixou o campo " + ex.campo + " por preencher.\nO valor em branco não é válido.\n Prima Cancelar para fechar a janela e voltar ao menu anterior ou Repetir para inserir os dados em falta", "Ooops", System.Windows.Forms.MessageBoxButtons.RetryCancel, System.Windows.Forms.MessageBoxIcon.Error, System.Windows.Forms.MessageBoxDefaultButton.Button1);
+                if (caixa == DialogResult.Cancel)
+                    ex.form.Close();
+            }
+        }
+
+        private void ValidarDados()
+        {
+            foreach (Control control in Controls)
+            {
+                if (control is TextBox && control.Text.Length == 0)
+                    throw new ExceptionFaltaDados(control.Tag.ToString(), this);
+            }
+            //TODO implementar um sistema que verifique se o texto da origem e/ou destino corresponde a algum dos concelhos ou freguesias de Portugal e, não correspondendo, lançar uma excepção apropriada
         }
     }
 }

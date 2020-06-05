@@ -40,6 +40,7 @@
             this.referencia_Textbox.Name = "referencia_Textbox";
             this.referencia_Textbox.Size = new System.Drawing.Size(223, 19);
             this.referencia_Textbox.TabIndex = 7;
+            this.referencia_Textbox.Tag = "referencia";
             // 
             // referencia_Label
             // 

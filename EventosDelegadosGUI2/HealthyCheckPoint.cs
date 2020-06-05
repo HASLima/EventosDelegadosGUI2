@@ -19,8 +19,8 @@ namespace EventosDelegadosGUI2
             //Application.SetCompatibleTextRenderingDefault(false);
             //Application.Run(new Form1());
 
-            Controller controller = new Controller();
-            controller.IniciarPrograma();
+                Controller controller = new Controller();
+                controller.IniciarPrograma();
         }
     }
 }

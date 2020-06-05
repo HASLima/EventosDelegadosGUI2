@@ -29,7 +29,9 @@ namespace EventosDelegadosGUI2
 
         public void IniciarPrograma()
         {
-            view.ActivarUI();
+
+                    view.ActivarUI();
+      
         }
         
         public void PrecisoSubmeterSalvoConduto(string origem, string destino)

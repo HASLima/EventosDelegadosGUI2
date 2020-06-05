@@ -21,7 +21,7 @@ namespace EventosDelegadosGUI2
 
 
         public SalvoConduto(string origem, string destino, int lastIdIssued)
-        {
+        {   
             Id = lastIdIssued + 1;
             Origem = origem;
             Destino = destino;
