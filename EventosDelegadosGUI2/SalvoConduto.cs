@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace EventosDelegadosGUI2
 {
     //Esta classe pertecence ao componente Model
-    class SalvoConduto
+    class SalvoConduto : ISalvoConduto
     {
         private int id;
         private string origem;
@@ -110,5 +110,13 @@ namespace EventosDelegadosGUI2
         }
 
         
+    }
+
+    public interface ISalvoConduto
+    {
+        string Origem { get; }
+        string Destino { get; }
+        string Referencia { get; }
+        bool Valido { get; }
     }
 }

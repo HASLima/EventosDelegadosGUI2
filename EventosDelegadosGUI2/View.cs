@@ -80,9 +80,9 @@ namespace EventosDelegadosGUI2
                 System.Windows.Forms.MessageBox.Show(String.Format("A referência {0} não consta no sistema!", referencia),"Salvo-Conduto NÃO encontrado");
         }
 
-        public void InformarSalvoCondutoCriado(string origem, string destino, string referencia)
+        public void InformarSalvoCondutoCriado(ISalvoConduto salvoConduto)
         {
-            System.Windows.Forms.MessageBox.Show(String.Format("Foi registado o Salvo-Conduto!\nOrigem: {0}\nDestino: {1}\nReferencia: {2}", origem, destino, referencia), "Novo Registo");
+            System.Windows.Forms.MessageBox.Show(String.Format("Foi registado o Salvo-Conduto!\nOrigem: {0}\nDestino: {1}\nReferencia: {2}", salvoConduto.Origem, salvoConduto.Destino, salvoConduto.Referencia), "Novo Registo");
         }
 
 
