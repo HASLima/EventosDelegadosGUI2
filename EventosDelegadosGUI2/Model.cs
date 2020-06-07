@@ -40,12 +40,15 @@ namespace EventosDelegadosGUI2
             }
         }
 
-        public void CriarNovoSalvoConduto(string origem, string destino)
+        public void CriarNovoSalvoConduto(string origem, string destino, bool imprimir)
         {
             
             SalvoConduto salvoConduto = new SalvoConduto(origem, destino, LastIdIssued());
             SalvoCondutoCriado(salvoConduto);
-            SalvoCondutoPDF pdf = new SalvoCondutoPDF(salvoConduto); //TODO isto tem de ser revisto
+            if (imprimir)
+            {
+                CriarPDF(salvoConduto);
+            }
             salvoCondutos.Add(salvoConduto);
         }
 
@@ -55,6 +58,11 @@ namespace EventosDelegadosGUI2
                 SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == referencia).Origem, salvoCondutos.Find(x => x.Referencia == referencia).Destino, referencia, salvoCondutos.Find(x => x.Referencia == referencia).Valido);
             else
                 SalvoCondutoVerificado(false, null, null, referencia, false);
-        } 
+        }
+
+        private void CriarPDF(ISalvoConduto salvoConduto)
+        {
+            _ = new SalvoCondutoPDF(salvoConduto); //TODO falta pedir o local de gravação
+        }
     }
 }

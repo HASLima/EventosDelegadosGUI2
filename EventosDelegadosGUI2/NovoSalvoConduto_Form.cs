@@ -38,7 +38,7 @@ namespace EventosDelegadosGUI2
             try
             {
                 ValidarDados();
-                view.CliqueEmSubmeter(origem_Textbox.Text, destino_Textbox.Text);
+                view.CliqueEmSubmeter(origem_Textbox.Text, destino_Textbox.Text, print_checkbox.Checked);
                 Close();
             }
             catch (ExceptionFaltaDados ex)

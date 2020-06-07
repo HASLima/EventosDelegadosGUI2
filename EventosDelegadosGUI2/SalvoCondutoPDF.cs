@@ -9,7 +9,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using static EventosDelegadosGUI2.Gdh;
 
 namespace EventosDelegadosGUI2
 {
@@ -75,7 +74,7 @@ namespace EventosDelegadosGUI2
 
             //Imprimir a data e hora em que foi impresso
             fontText = new XFont("Arial", 8);
-            textFormatterText.DrawString(String.Format("Impresso em {0}", ActualGdh()), fontText, XBrushes.Gray, new XRect(page.Width - 150, page.Height - 30, 100, 20)); //TODO implementar o metodo GDH
+            textFormatterText.DrawString(String.Format("Impresso em {0}", Gdh.ActualGdh()), fontText, XBrushes.Gray, new XRect(page.Width - 150, page.Height - 30, 100, 20)); //TODO implementar o metodo GDH
 
             //Gravar o ficheiro
             doc.Save("salvoCOndutoPDF.pdf"); //TODO o nome do ficheiro deve ser relevante

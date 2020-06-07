@@ -17,7 +17,7 @@ namespace EventosDelegadosGUI2
 
 
 
-        public delegate void UtilizadorClicarEmSubmeter(string origem, string destino);
+        public delegate void UtilizadorClicarEmSubmeter(string origem, string destino, bool imprimir);
         public event UtilizadorClicarEmSubmeter UtilizadorClicouEmSubmeter;
 
         public delegate void UtilizadorClicarEmVerificar(string referencia);
@@ -59,9 +59,9 @@ namespace EventosDelegadosGUI2
             verificarSalvoConduto_Form.ShowDialog();
         }
 
-        public void CliqueEmSubmeter(string origem, string destino)
+        public void CliqueEmSubmeter(string origem, string destino, bool imprimir)
         {
-            UtilizadorClicouEmSubmeter(origem, destino);
+            UtilizadorClicouEmSubmeter(origem, destino, imprimir);
         }
 
         public void CliqueEmVerificar(string referencia)

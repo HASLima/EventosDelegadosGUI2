@@ -33,6 +33,7 @@
             this.origem_Textbox = new System.Windows.Forms.TextBox();
             this.destino_Textbox = new System.Windows.Forms.TextBox();
             this.destino_Label = new System.Windows.Forms.Label();
+            this.print_checkbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // submeter_button
@@ -40,7 +41,7 @@
             this.submeter_button.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.submeter_button.Location = new System.Drawing.Point(319, 5);
             this.submeter_button.Name = "submeter_button";
-            this.submeter_button.Size = new System.Drawing.Size(150, 54);
+            this.submeter_button.Size = new System.Drawing.Size(150, 65);
             this.submeter_button.TabIndex = 1;
             this.submeter_button.Text = "Submeter";
             this.submeter_button.UseVisualStyleBackColor = true;
@@ -84,11 +85,22 @@
             this.destino_Label.TabIndex = 4;
             this.destino_Label.Text = "Destino:";
             // 
+            // print_checkbox
+            // 
+            this.print_checkbox.AutoSize = true;
+            this.print_checkbox.Location = new System.Drawing.Point(15, 53);
+            this.print_checkbox.Name = "print_checkbox";
+            this.print_checkbox.Size = new System.Drawing.Size(67, 17);
+            this.print_checkbox.TabIndex = 6;
+            this.print_checkbox.Text = "Imprimir?";
+            this.print_checkbox.UseVisualStyleBackColor = true;
+            // 
             // NovoSalvoConduto_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(475, 63);
+            this.ClientSize = new System.Drawing.Size(475, 79);
+            this.Controls.Add(this.print_checkbox);
             this.Controls.Add(this.destino_Textbox);
             this.Controls.Add(this.destino_Label);
             this.Controls.Add(this.origem_Textbox);
@@ -108,5 +120,6 @@
         private System.Windows.Forms.TextBox origem_Textbox;
         private System.Windows.Forms.TextBox destino_Textbox;
         private System.Windows.Forms.Label destino_Label;
+        private System.Windows.Forms.CheckBox print_checkbox;
     }
 }

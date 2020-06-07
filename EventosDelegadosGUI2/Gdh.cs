@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace EventosDelegadosGUI2
 {
+    //Esta class pertence ao Model
     class Gdh
     {
         public static string ActualGdh()
