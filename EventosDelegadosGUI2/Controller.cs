@@ -39,9 +39,9 @@ namespace EventosDelegadosGUI2
             model.CriarNovoSalvoConduto(origem, destino, imprimir);
         }
 
-        public void PrecisoVerificarSalvoConduto(string referencia, bool print)
+        public void PrecisoVerificarSalvoConduto(IPedidoDeVerificacao pedidoDeVerificacao)
         {
-            model.VerificarSalvoConduto(referencia, print);
+            model.VerificarSalvoConduto(pedidoDeVerificacao);
         }
 
         

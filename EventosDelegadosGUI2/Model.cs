@@ -52,18 +52,18 @@ namespace EventosDelegadosGUI2
             salvoCondutos.Add(salvoConduto);
         }
 
-        public void VerificarSalvoConduto(string referencia, bool print)
+        public void VerificarSalvoConduto(IPedidoDeVerificacao pedidoDeVerificacao)
         {
-            if (salvoCondutos.Exists(x => x.Referencia == referencia))
+            if (salvoCondutos.Exists(x => x.Referencia == pedidoDeVerificacao.Referencia))
             {
-                SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == referencia).Origem, salvoCondutos.Find(x => x.Referencia == referencia).Destino, referencia, salvoCondutos.Find(x => x.Referencia == referencia).Valido);
-                if (print)
+                SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Origem, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Destino, pedidoDeVerificacao.Referencia, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Valido);
+                if (pedidoDeVerificacao.Imprimir)
                 {
-                    CriarPDF(salvoCondutos.Find(x => x.Referencia == referencia));
+                    CriarPDF(salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia));
                 }
             }
             else
-                SalvoCondutoVerificado(false, null, null, referencia, false);
+                SalvoCondutoVerificado(false, null, null, pedidoDeVerificacao.Referencia, false);
         }
 
         private void CriarPDF(ISalvoConduto salvoConduto)

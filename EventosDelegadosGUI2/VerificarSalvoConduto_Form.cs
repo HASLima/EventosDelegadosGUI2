@@ -11,7 +11,7 @@ using System.Windows.Forms;
 namespace EventosDelegadosGUI2
     //Esta class pertence à View
 {
-    public partial class VerificarSalvoConduto_Form : Form
+    public partial class VerificarSalvoConduto_Form : Form, IPedidoDeVerificacao
     {
         View view;
 
@@ -27,12 +27,22 @@ namespace EventosDelegadosGUI2
             set { view = value; }
         }
 
+        public string Referencia
+        {
+            get { return referencia_Textbox.Text; }
+        }
+
+        public bool Imprimir
+        {
+            get { return print_checkbox.Checked; }
+        }
+
         private void verificarSalvoConduto_button_Click(object sender, EventArgs e)
         {
             try
             {
                 ValidarDados();
-                view.CliqueEmVerificar(referencia_Textbox.Text, print_checkbox.Checked);
+                view.CliqueEmVerificar(this);
                 Close();
             }
             catch (ExceptionFaltaDados ex)
@@ -53,5 +63,11 @@ namespace EventosDelegadosGUI2
             }
             //TODO implementar um sistema que verifique se o texto da origem e/ou destino corresponde a algum dos concelhos ou freguesias de Portugal e, não correspondendo, lançar uma excepção apropriada
         }
+    }
+
+    public interface IPedidoDeVerificacao
+    {
+        string Referencia { get; }
+        bool Imprimir { get; }
     }
 }
