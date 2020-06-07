@@ -62,50 +62,8 @@ namespace EventosDelegadosGUI2
 
         private string DefineReferencia()
         {
-            referencia = DateTime.Now.Day.ToString("D2") +
-                DateTime.Now.Hour.ToString("D2") +
-                DateTime.Now.Minute.ToString("D2") +
-                DateTime.Now.Second.ToString("D2");
-            switch (DateTime.Now.Month)
-            {
-                case 1:
-                    referencia += "JAN";
-                    break;
-                case 2:
-                    referencia += "FEV";
-                    break;
-                case 3:
-                    referencia += "MAR";
-                    break;
-                case 4:
-                    referencia += "ABR";
-                    break;
-                case 5:
-                    referencia += "MAI";
-                    break;
-                case 6:
-                    referencia += "JUN";
-                    break;
-                case 7:
-                    referencia += "JUL";
-                    break;
-                case 8:
-                    referencia += "AGO";
-                    break;
-                case 9:
-                    referencia += "SET";
-                    break;
-                case 10:
-                    referencia += "OUT";
-                    break;
-                case 11:
-                    referencia += "NOV";
-                    break;
-                case 12:
-                    referencia += "DEC";
-                    break;
-            }
-            referencia += DateTime.Now.Year.ToString("D2") + id.ToString("D8");
+            //A referencia é composta pelo GrupoDataHora da criação do Salvo-Conduto com o ide com 8 algarismos.
+            referencia = Gdh.ActualGdh() + id.ToString("D8");
             return referencia;
         }
 
