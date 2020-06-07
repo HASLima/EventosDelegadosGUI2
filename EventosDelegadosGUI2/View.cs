@@ -20,7 +20,7 @@ namespace EventosDelegadosGUI2
         public delegate void UtilizadorClicarEmSubmeter(string origem, string destino, bool imprimir);
         public event UtilizadorClicarEmSubmeter UtilizadorClicouEmSubmeter;
 
-        public delegate void UtilizadorClicarEmVerificar(string referencia);
+        public delegate void UtilizadorClicarEmVerificar(string referencia, bool print);
         public event UtilizadorClicarEmVerificar UtilizadorClicouEmVerificar;
 
 
@@ -64,9 +64,9 @@ namespace EventosDelegadosGUI2
             UtilizadorClicouEmSubmeter(origem, destino, imprimir);
         }
 
-        public void CliqueEmVerificar(string referencia)
+        public void CliqueEmVerificar(string referencia, bool imprimir)
         {
-            UtilizadorClicouEmVerificar(referencia);
+            UtilizadorClicouEmVerificar(referencia, imprimir);
         }
 
         public void InformarSalvoCondutoVerificado(bool encontrado, string origem, string destino, string referencia, bool valido)

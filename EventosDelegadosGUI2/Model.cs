@@ -52,10 +52,16 @@ namespace EventosDelegadosGUI2
             salvoCondutos.Add(salvoConduto);
         }
 
-        public void VerificarSalvoConduto(string referencia)
+        public void VerificarSalvoConduto(string referencia, bool print)
         {
             if (salvoCondutos.Exists(x => x.Referencia == referencia))
+            {
                 SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == referencia).Origem, salvoCondutos.Find(x => x.Referencia == referencia).Destino, referencia, salvoCondutos.Find(x => x.Referencia == referencia).Valido);
+                if (print)
+                {
+                    CriarPDF(salvoCondutos.Find(x => x.Referencia == referencia));
+                }
+            }
             else
                 SalvoCondutoVerificado(false, null, null, referencia, false);
         }

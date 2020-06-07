@@ -32,7 +32,7 @@ namespace EventosDelegadosGUI2
             try
             {
                 ValidarDados();
-                view.CliqueEmVerificar(referencia_Textbox.Text);
+                view.CliqueEmVerificar(referencia_Textbox.Text, print_checkbox.Checked);
                 Close();
             }
             catch (ExceptionFaltaDados ex)

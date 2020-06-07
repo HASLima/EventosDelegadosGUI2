@@ -31,6 +31,7 @@
             this.referencia_Textbox = new System.Windows.Forms.TextBox();
             this.referencia_Label = new System.Windows.Forms.Label();
             this.verificarSalvoConduto_button = new System.Windows.Forms.Button();
+            this.print_checkbox = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // referencia_Textbox
@@ -55,7 +56,7 @@
             // verificarSalvoConduto_button
             // 
             this.verificarSalvoConduto_button.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.verificarSalvoConduto_button.Location = new System.Drawing.Point(15, 30);
+            this.verificarSalvoConduto_button.Location = new System.Drawing.Point(15, 51);
             this.verificarSalvoConduto_button.Name = "verificarSalvoConduto_button";
             this.verificarSalvoConduto_button.Size = new System.Drawing.Size(298, 54);
             this.verificarSalvoConduto_button.TabIndex = 8;
@@ -63,11 +64,22 @@
             this.verificarSalvoConduto_button.UseVisualStyleBackColor = true;
             this.verificarSalvoConduto_button.Click += new System.EventHandler(this.verificarSalvoConduto_button_Click);
             // 
+            // print_checkbox
+            // 
+            this.print_checkbox.AutoSize = true;
+            this.print_checkbox.Location = new System.Drawing.Point(15, 28);
+            this.print_checkbox.Name = "print_checkbox";
+            this.print_checkbox.Size = new System.Drawing.Size(67, 17);
+            this.print_checkbox.TabIndex = 9;
+            this.print_checkbox.Text = "Imprimir?";
+            this.print_checkbox.UseVisualStyleBackColor = true;
+            // 
             // VerificarSalvoConduto_Form
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(322, 96);
+            this.ClientSize = new System.Drawing.Size(322, 111);
+            this.Controls.Add(this.print_checkbox);
             this.Controls.Add(this.verificarSalvoConduto_button);
             this.Controls.Add(this.referencia_Textbox);
             this.Controls.Add(this.referencia_Label);
@@ -82,5 +94,6 @@
         private System.Windows.Forms.TextBox referencia_Textbox;
         private System.Windows.Forms.Label referencia_Label;
         private System.Windows.Forms.Button verificarSalvoConduto_button;
+        private System.Windows.Forms.CheckBox print_checkbox;
     }
 }
