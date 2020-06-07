@@ -50,22 +50,27 @@ namespace EventosDelegadosGUI2
 
             System.IO.Stream file = null;
 
-            string[] caminhos =
-            {
-                "EventosDelegadosGUI2.Properties.Resources.resources.entidadesCompetentes",
-                "EventosDelegadosGUI2.Properties.Resources.entidadesCompetentes",
-                "EventosDelegadosGUI2.Properties.Resources.resources.Sem título.png",
-                "EventosDelegadosGUI2.Properties.Resources.Sem título.png",
-                "EventosDelegadosGUI2.Properties.Sem título.png"
-            };
+            //string[] caminhos =
+            //{
+            //    "EventosDelegadosGUI2.Properties.Resources.resources.entidadesCompetentes",
+            //    "EventosDelegadosGUI2.Properties.Resources.entidadesCompetentes",
+            //    "EventosDelegadosGUI2.Properties.Resources.resources.Sem título.png",
+            //    "EventosDelegadosGUI2.Properties.Resources.Sem título.png",
+            //    "EventosDelegadosGUI2.Properties.Sem título.png"
+            //};
 
-            for (int i = 0; file == null && i < caminhos.Length; i++)
-            {
-                file = thisExe.GetManifestResourceStream(caminhos[i]);
-            }
+            //for (int i = 0; file == null && i < caminhos.Length; i++)
+            //{
+            //    file = thisExe.GetManifestResourceStream(caminhos[i]);
+            //    System.Windows.Forms.MessageBox.Show(i.ToString());
+            //}
+
+            file = thisExe.GetManifestResourceStream("EventosDelegadosGUI2.Properties.Sem título.png");
             image = XImage.FromStream(file);
-
-            graphics.DrawImage(image, 50, 0, 100, ResizeHeight(ref image, 100));
+            XRect imageRect = new XRect(150, 30, page.Width-300, 100);
+            graphics.DrawRectangle(XBrushes.White, imageRect);
+            //graphics.DrawImage(image, page.Width/2-image.PointWidth/2, 0, 100, ResizeHeight(ref image, 100));
+            graphics.DrawImage(image, imageRect.Left, imageRect.Top, imageRect.Width, XUnit.FromMillimeter(15));
             textFormatterTitle.DrawString("Salvo-Conduto", fontTitle, XBrushes.Black, new XRect(50, 100, page.Width - 100, 50));
             textFormatterText.DrawString("Origem: ", fontText, XBrushes.Black, new XRect(50, 200, 100, 25));
             textFormatterText.DrawString("Destino: ", fontText, XBrushes.Black, new XRect(50, 225, 100, 25));
@@ -78,9 +83,6 @@ namespace EventosDelegadosGUI2
 
             textFormatterText.DrawString("Este documento autoriza o seu portador a deslocar-se da localidade indicada em Origem até à localidade indicada em Destino. A qualquer momento este documento poderá ser revogado pelas Entidades Competentes. O portador pode contactar as Entidades Competentes a fim de verificar a validade do Salvo-Conduto, indicando a sua Referência.", fontText, XBrushes.Gray, new XRect(50, 300, page.Width - 100, page.Height-(300+50)));
 
-            System.Windows.Forms.MessageBox.Show(String.Format("Height in Point: {0}, Height in Pixel: {1}\nWidth in Point: {2}, Width in Pixel: {3}", image.PointHeight, image.PixelHeight, image.PointWidth, image.PixelWidth));
-
-            
             doc.Save("salvoCOndutoPDF.pdf"); //TODO o nome do ficheiro deve ser relevante
             System.Diagnostics.Process.Start("salvoCOndutoPDF.pdf");
         }

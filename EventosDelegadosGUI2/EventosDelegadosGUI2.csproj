@@ -115,16 +115,13 @@
     <None Include="Resources\imagem.png" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\Sem título.png" />
+    <EmbeddedResource Include="Properties\Sem título.png" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\teste.jpg.jpg" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\testeTexto.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Sem título.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
