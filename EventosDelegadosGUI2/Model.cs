@@ -45,6 +45,7 @@ namespace EventosDelegadosGUI2
             
             SalvoConduto salvoConduto = new SalvoConduto(origem, destino, LastIdIssued());
             SalvoCondutoCriado(salvoConduto);
+            SalvoCondutoPDF pdf = new SalvoCondutoPDF(salvoConduto); //TODO isto tem de ser revisto
             salvoCondutos.Add(salvoConduto);
         }
 
