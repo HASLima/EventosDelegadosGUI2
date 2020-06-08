@@ -87,9 +87,6 @@ namespace HealthyCheckpoint
             Debug.WriteLine("fileName depois do SaveDoc: " + fileName);
             System.Diagnostics.Process.Start(fileName);
 
-
-
-            //graphics.DrawBarCode(barcode, XBrushes.Black, new XPoint(50, 50));
         }
 
         public double ResizeHeight(ref XImage image, double newHeightSize) //given an image and a new point height size it returns the new  point width size so that the proportion is not altered
@@ -157,17 +154,19 @@ namespace HealthyCheckpoint
             int value = 104;
             int i = 0;
             int tmp;
-            char sumcheck;
             foreach (char letra in text)
             {
                 i++;
-                tmp = Convert.ToInt32(letra)-32;
-                value += tmp * i;
+                value += (Convert.ToInt32(letra) - 32) * i;
             }
             value %= 103;
             value += 32;
+            if (value > 126)
+            {
+                value += 68;
+            }
             code = "Ì" + text;
-            Debug.WriteLine((char)value);
+            Debug.WriteLine((char)value + " " + value);
             code += ((char)value).ToString();
             code.Append((char)value);
             code += "Î";
