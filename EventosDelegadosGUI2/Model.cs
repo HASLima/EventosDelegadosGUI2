@@ -85,4 +85,12 @@ namespace HealthyCheckpoint
             FoiCriadoPDF(caminho);
         }
     }
+
+    public interface ISalvoConduto
+    {
+        string Origem { get; }
+        string Destino { get; }
+        string Referencia { get; }
+        bool Valido { get; }
+    }
 }
