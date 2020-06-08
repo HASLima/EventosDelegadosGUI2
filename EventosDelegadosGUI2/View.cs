@@ -92,4 +92,10 @@ namespace HealthyCheckpoint
 
 
     }
+
+    public interface IPedidoDeVerificacao
+    {
+        string Referencia { get; }
+        bool Imprimir { get; }
+    }
 }
