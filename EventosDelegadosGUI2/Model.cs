@@ -7,11 +7,14 @@ namespace HealthyCheckpoint
         private View view;
         private List<SalvoConduto> salvoCondutos;
 
-        public delegate void VerificacaoSalvoConduto(bool encontrado, string origem, string destino, string referencia, bool valido);
+        public delegate void VerificacaoSalvoConduto(bool encontrado, string origem, string destino, string referencia, bool valido, string caminho = null);
         public event VerificacaoSalvoConduto SalvoCondutoVerificado;
 
-        public delegate void CriacaoSalvoConduto(ISalvoConduto salvoConduto);
+        public delegate void CriacaoSalvoConduto(ISalvoConduto salvoConduto, string caminho = null);
         public event CriacaoSalvoConduto SalvoCondutoCriado;
+
+        public delegate void CriacaoPDF(string caminho);
+        public event CriacaoPDF FoiCriadoPDF;
 
         public Model(View v)
         {
@@ -37,33 +40,49 @@ namespace HealthyCheckpoint
 
         public void CriarNovoSalvoConduto(string origem, string destino, bool imprimir)
         {
+            string caminho;
 
             SalvoConduto salvoConduto = new SalvoConduto(origem, destino, LastIdIssued());
-            SalvoCondutoCriado(salvoConduto);
             if (imprimir)
             {
-                CriarPDF(salvoConduto);
+                caminho = CriarPDF(salvoConduto);
+                SalvoCondutoCriado(salvoConduto, caminho);
             }
+            else
+                SalvoCondutoCriado(salvoConduto);
             salvoCondutos.Add(salvoConduto);
         }
 
         public void VerificarSalvoConduto(IPedidoDeVerificacao pedidoDeVerificacao)
         {
+            string caminho;
             if (salvoCondutos.Exists(x => x.Referencia == pedidoDeVerificacao.Referencia))
             {
-                SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Origem, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Destino, pedidoDeVerificacao.Referencia, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Valido);
+                
                 if (pedidoDeVerificacao.Imprimir)
                 {
-                    CriarPDF(salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia));
+                    caminho = CriarPDF(salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia));
+                    SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Origem, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Destino, pedidoDeVerificacao.Referencia, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Valido, caminho);
                 }
+                else
+                {
+                    SalvoCondutoVerificado(true, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Origem, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Destino, pedidoDeVerificacao.Referencia, salvoCondutos.Find(x => x.Referencia == pedidoDeVerificacao.Referencia).Valido);
+                }
+                
             }
             else
                 SalvoCondutoVerificado(false, null, null, pedidoDeVerificacao.Referencia, false);
         }
 
-        private void CriarPDF(ISalvoConduto salvoConduto)
+        private string CriarPDF(ISalvoConduto salvoConduto)
         {
-            _ = new SalvoCondutoPDF(salvoConduto);
+            SalvoCondutoPDF salvoCondutoPDF = new SalvoCondutoPDF(salvoConduto);
+            return salvoCondutoPDF.FileName;
+        }
+
+        private void CriadoPDF(string caminho)
+        {
+            FoiCriadoPDF(caminho);
         }
     }
 }

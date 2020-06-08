@@ -23,6 +23,11 @@ namespace HealthyCheckpoint
         XRect imageRect;
         System.Reflection.Assembly thisExe;
         Stream file;
+        string filename;
+        private string fileName;
+
+        public delegate void CriacaoSalvoCondutoPDF(string caminho);
+        public event CriacaoSalvoCondutoPDF FoiCriadoPDF;
 
 
         public SalvoCondutoPDF(ISalvoConduto salvoConduto)
@@ -81,12 +86,17 @@ namespace HealthyCheckpoint
             textFormatterText.DrawString(String.Format("Impresso em {0}", Gdh.ActualGdh()), fontText, XBrushes.Gray, new XRect(page.Width - 150, page.Height - 30, 100, 20)); //TODO implementar o metodo GDH
 
             //Gravar o ficheiro
-            string fileName = String.Format("salvoConduto{0}.pdf", salvoConduto.Referencia);
+            fileName = String.Format("salvoConduto{0}.pdf", salvoConduto.Referencia);
             Debug.WriteLine("fileName antes do SaveDoc: " + fileName);
             fileName = SaveDoc(fileName);
             Debug.WriteLine("fileName depois do SaveDoc: " + fileName);
-            System.Diagnostics.Process.Start(fileName);
+            //FoiCriadoPDF(fileName);
 
+        }
+
+        public string FileName
+        {
+            get { return fileName; }
         }
 
         public double ResizeHeight(ref XImage image, double newHeightSize) //given an image and a new point height size it returns the new  point width size so that the proportion is not altered

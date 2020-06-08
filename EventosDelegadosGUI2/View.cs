@@ -63,20 +63,30 @@ namespace HealthyCheckpoint
             UtilizadorClicouEmVerificar(pedidoDeVerificacao);
         }
 
-        public void InformarSalvoCondutoVerificado(bool encontrado, string origem, string destino, string referencia, bool valido)
+        public void InformarSalvoCondutoVerificado(bool encontrado, string origem, string destino, string referencia, bool valido, string caminho)
         {
             if (encontrado)
+            {
                 if (valido)
                     System.Windows.Forms.MessageBox.Show(String.Format("Origem: {0}\nDestino: {1}\nVÁLIDO", origem, destino), "Salvo-Conduto Válido encontrado");
                 else
                     System.Windows.Forms.MessageBox.Show(String.Format("Origem: {0}\nDestino: {1}\nNÃO VÁLIDO", origem, destino), "Salvo-Conduto NÃO Válido encontrado");
+                if (caminho != null)
+                {
+                    System.Diagnostics.Process.Start(caminho);
+                }
+            }
             else
                 System.Windows.Forms.MessageBox.Show(String.Format("A referência {0} não consta no sistema!", referencia), "Salvo-Conduto NÃO encontrado");
         }
 
-        public void InformarSalvoCondutoCriado(ISalvoConduto salvoConduto)
+        public void InformarSalvoCondutoCriado(ISalvoConduto salvoConduto, string caminho)
         {
             System.Windows.Forms.MessageBox.Show(String.Format("Foi registado o Salvo-Conduto!\nOrigem: {0}\nDestino: {1}\nReferencia: {2}", salvoConduto.Origem, salvoConduto.Destino, salvoConduto.Referencia), "Novo Registo");
+            if (caminho != null)
+            {
+                System.Diagnostics.Process.Start(caminho);
+            }
         }
 
 
