@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Security.Cryptography.X509Certificates;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     public class Model
     {
@@ -14,9 +14,6 @@ namespace EventosDelegadosGUI2
 
         public delegate void CriacaoSalvoConduto(ISalvoConduto salvoConduto);
         public event CriacaoSalvoConduto SalvoCondutoCriado;
-
-
-
 
         public Model(View v)
         {
@@ -68,7 +65,7 @@ namespace EventosDelegadosGUI2
 
         private void CriarPDF(ISalvoConduto salvoConduto)
         {
-            _ = new SalvoCondutoPDF(salvoConduto); //TODO falta pedir o local de gravação
+            _ = new SalvoCondutoPDF(salvoConduto);
         }
     }
 }

@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace EventosDelegadosGUI2.Properties
+namespace HealthyCheckpoint.Properties
 {
 
 

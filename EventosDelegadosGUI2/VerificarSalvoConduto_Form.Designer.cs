@@ -1,4 +1,4 @@
-﻿namespace EventosDelegadosGUI2
+﻿namespace HealthyCheckpoint
 {
     partial class VerificarSalvoConduto_Form
     {
@@ -40,7 +40,7 @@
             this.referencia_Textbox.Location = new System.Drawing.Point(90, 5);
             this.referencia_Textbox.Name = "referencia_Textbox";
             this.referencia_Textbox.Size = new System.Drawing.Size(223, 19);
-            this.referencia_Textbox.TabIndex = 7;
+            this.referencia_Textbox.TabIndex = 1;
             this.referencia_Textbox.Tag = "referencia";
             // 
             // referencia_Label
@@ -59,7 +59,7 @@
             this.verificarSalvoConduto_button.Location = new System.Drawing.Point(15, 51);
             this.verificarSalvoConduto_button.Name = "verificarSalvoConduto_button";
             this.verificarSalvoConduto_button.Size = new System.Drawing.Size(298, 54);
-            this.verificarSalvoConduto_button.TabIndex = 8;
+            this.verificarSalvoConduto_button.TabIndex = 3;
             this.verificarSalvoConduto_button.Text = "Verificar Salvo-Conduto";
             this.verificarSalvoConduto_button.UseVisualStyleBackColor = true;
             this.verificarSalvoConduto_button.Click += new System.EventHandler(this.verificarSalvoConduto_button_Click);
@@ -70,7 +70,7 @@
             this.print_checkbox.Location = new System.Drawing.Point(15, 28);
             this.print_checkbox.Name = "print_checkbox";
             this.print_checkbox.Size = new System.Drawing.Size(67, 17);
-            this.print_checkbox.TabIndex = 9;
+            this.print_checkbox.TabIndex = 2;
             this.print_checkbox.Text = "Imprimir?";
             this.print_checkbox.UseVisualStyleBackColor = true;
             // 

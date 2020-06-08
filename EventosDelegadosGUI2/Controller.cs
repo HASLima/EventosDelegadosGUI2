@@ -5,7 +5,7 @@ using System.Management.Instrumentation;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     class Controller
     {

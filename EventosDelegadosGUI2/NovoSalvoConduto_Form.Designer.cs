@@ -1,4 +1,4 @@
-﻿namespace EventosDelegadosGUI2
+﻿namespace HealthyCheckpoint
 {
     partial class NovoSalvoConduto_Form
     {
@@ -42,7 +42,7 @@
             this.submeter_button.Location = new System.Drawing.Point(319, 5);
             this.submeter_button.Name = "submeter_button";
             this.submeter_button.Size = new System.Drawing.Size(150, 65);
-            this.submeter_button.TabIndex = 1;
+            this.submeter_button.TabIndex = 4;
             this.submeter_button.Text = "Submeter";
             this.submeter_button.UseVisualStyleBackColor = true;
             this.submeter_button.Click += new System.EventHandler(this.submeter_button_Click);
@@ -63,7 +63,7 @@
             this.origem_Textbox.Location = new System.Drawing.Point(90, 5);
             this.origem_Textbox.Name = "origem_Textbox";
             this.origem_Textbox.Size = new System.Drawing.Size(223, 19);
-            this.origem_Textbox.TabIndex = 3;
+            this.origem_Textbox.TabIndex = 1;
             this.origem_Textbox.Tag = "origem";
             // 
             // destino_Textbox
@@ -72,7 +72,7 @@
             this.destino_Textbox.Location = new System.Drawing.Point(90, 30);
             this.destino_Textbox.Name = "destino_Textbox";
             this.destino_Textbox.Size = new System.Drawing.Size(223, 19);
-            this.destino_Textbox.TabIndex = 5;
+            this.destino_Textbox.TabIndex = 2;
             this.destino_Textbox.Tag = "destino";
             // 
             // destino_Label
@@ -91,7 +91,7 @@
             this.print_checkbox.Location = new System.Drawing.Point(15, 53);
             this.print_checkbox.Name = "print_checkbox";
             this.print_checkbox.Size = new System.Drawing.Size(67, 17);
-            this.print_checkbox.TabIndex = 6;
+            this.print_checkbox.TabIndex = 3;
             this.print_checkbox.Text = "Imprimir?";
             this.print_checkbox.UseVisualStyleBackColor = true;
             // 

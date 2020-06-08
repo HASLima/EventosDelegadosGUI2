@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     //Esta class pertence à componente View
     [Serializable]

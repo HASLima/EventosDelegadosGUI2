@@ -1,4 +1,4 @@
-﻿namespace EventosDelegadosGUI2
+﻿namespace HealthyCheckpoint
 {
     partial class Form1
     {

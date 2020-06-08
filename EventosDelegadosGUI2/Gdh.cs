@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     //Esta class pertence ao Model
     class Gdh

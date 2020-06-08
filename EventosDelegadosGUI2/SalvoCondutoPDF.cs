@@ -1,16 +1,19 @@
-﻿using EventosDelegadosGUI2.Properties;
+﻿using HealthyCheckpoint.Properties;
 using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms.VisualStyles;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     class SalvoCondutoPDF
     {
@@ -77,8 +80,11 @@ namespace EventosDelegadosGUI2
             textFormatterText.DrawString(String.Format("Impresso em {0}", Gdh.ActualGdh()), fontText, XBrushes.Gray, new XRect(page.Width - 150, page.Height - 30, 100, 20)); //TODO implementar o metodo GDH
 
             //Gravar o ficheiro
-            doc.Save("salvoCOndutoPDF.pdf"); //TODO o nome do ficheiro deve ser relevante
-            System.Diagnostics.Process.Start("salvoCOndutoPDF.pdf");
+            string fileName = String.Format("salvoConduto{0}.pdf", salvoConduto.Referencia);
+            Debug.WriteLine("fileName antes do SaveDoc: " + fileName);
+            fileName = SaveDoc(fileName);
+            Debug.WriteLine("fileName depois do SaveDoc: " + fileName);
+            System.Diagnostics.Process.Start(fileName);
         }
 
         public double ResizeHeight(ref XImage image, double newHeightSize) //given an image and a new point height size it returns the new  point width size so that the proportion is not altered
@@ -91,6 +97,53 @@ namespace EventosDelegadosGUI2
         {
             double resizeFactor = newWidthSize / image.PointWidth;
             return image.PointHeight * resizeFactor;
+        }
+
+        public bool IsFileLocked(string fileName)
+        {
+            var stream = (FileStream)null;
+            FileInfo file = new FileInfo(fileName);
+
+            try
+            {
+                stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+            }
+            catch (System.IO.FileNotFoundException ex1)
+            {
+                return false;
+            }
+            catch (System.IO.IOException ex2)
+            {
+                return true;
+            }
+            finally
+            {
+                if (stream != null)
+                    stream.Close();
+            }
+            return false;
+        }
+
+        public string SaveDoc(string fileName)
+        {
+            while (IsFileLocked(fileName))
+            {
+                if (fileName.Substring(fileName.Length - 5, 1) == ")")
+                {
+                    int start = fileName.IndexOf('(') + 1;
+                    int end = fileName.IndexOf(')') - 1;
+                    int value;
+                    Int32.TryParse(fileName.Substring(start, end - start + 1), out value);
+                    Debug.WriteLine(value);
+                    fileName = fileName.Substring(0, start - 1) + "(" + (value + 1) + ").pdf";
+                }
+                else
+                {
+                    fileName = fileName.Substring(0, fileName.Length - 4) + "(2).pdf";
+                }
+            }
+            doc.Save(fileName);
+            return (fileName);
         }
     }
 }

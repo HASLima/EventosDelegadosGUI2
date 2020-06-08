@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace EventosDelegadosGUI2
+namespace HealthyCheckpoint
 {
     //Esta classe pertecence ao componente Model
     class SalvoConduto : ISalvoConduto
