@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Security.Cryptography.X509Certificates;
+﻿using System.Collections.Generic;
 
 namespace HealthyCheckpoint
 {
@@ -39,7 +37,7 @@ namespace HealthyCheckpoint
 
         public void CriarNovoSalvoConduto(string origem, string destino, bool imprimir)
         {
-            
+
             SalvoConduto salvoConduto = new SalvoConduto(origem, destino, LastIdIssued());
             SalvoCondutoCriado(salvoConduto);
             if (imprimir)

@@ -1,17 +1,9 @@
-﻿using HealthyCheckpoint.Properties;
-using PdfSharp.Drawing;
+﻿using PdfSharp.Drawing;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
-using System.Collections.Generic;
-using System.Data;
 using System.Diagnostics;
-using System.Drawing;
 using System.IO;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms.VisualStyles;
 
 namespace HealthyCheckpoint
 {
@@ -51,7 +43,7 @@ namespace HealthyCheckpoint
             image = XImage.FromStream(file);
 
             //tracar um rectangulo para ser possivel centrar o logo
-            imageRect = new XRect(150, 30, page.Width-300, 100);
+            imageRect = new XRect(150, 30, page.Width - 300, 100);
 
             //imprimir o logo
             graphics.DrawRectangle(XBrushes.White, imageRect);
@@ -64,16 +56,16 @@ namespace HealthyCheckpoint
             textFormatterText.DrawString("Origem: ", fontText, XBrushes.Black, new XRect(50, 200, 100, 25));
             textFormatterText.DrawString("Destino: ", fontText, XBrushes.Black, new XRect(50, 225, 100, 25));
             textFormatterText.DrawString("Referencia: ", fontText, XBrushes.Black, new XRect(50, 250, 100, 25));
-            
+
             //Mudar a font e preencher os campos relativos à origem, destino e referencia
             fontText = new XFont("Lucida Console", 12);
-            textFormatterText.DrawString(salvoConduto.Origem, fontText, XBrushes.Black, new XRect(175, 200, page.Width-(175+50), 25));
+            textFormatterText.DrawString(salvoConduto.Origem, fontText, XBrushes.Black, new XRect(175, 200, page.Width - (175 + 50), 25));
             textFormatterText.DrawString(salvoConduto.Destino, fontText, XBrushes.Black, new XRect(175, 225, page.Width - (175 + 50), 25));
             textFormatterText.DrawString(salvoConduto.Referencia, fontText, XBrushes.Black, new XRect(175, 250, page.Width - (175 + 50), 25));
 
             //Voltar à font original e imprimir texto legal
             fontText = new XFont("Arial", 10);
-            textFormatterText.DrawString("Este documento autoriza o seu portador a deslocar-se da localidade indicada em Origem até à localidade indicada em Destino. A qualquer momento este documento poderá ser revogado pelas Entidades Competentes. O portador pode contactar as Entidades Competentes a fim de verificar a validade do Salvo-Conduto, indicando a sua Referência.", fontText, XBrushes.Gray, new XRect(50, 300, page.Width - 100, page.Height-(300+50)));
+            textFormatterText.DrawString("Este documento autoriza o seu portador a deslocar-se da localidade indicada em Origem até à localidade indicada em Destino. A qualquer momento este documento poderá ser revogado pelas Entidades Competentes. O portador pode contactar as Entidades Competentes a fim de verificar a validade do Salvo-Conduto, indicando a sua Referência.", fontText, XBrushes.Gray, new XRect(50, 300, page.Width - 100, page.Height - (300 + 50)));
 
             //Imprimir a data e hora em que foi impresso
             fontText = new XFont("Arial", 8);
@@ -108,11 +100,11 @@ namespace HealthyCheckpoint
             {
                 stream = file.Open(FileMode.Open, FileAccess.ReadWrite, FileShare.None);
             }
-            catch (System.IO.FileNotFoundException ex1)
+            catch (System.IO.FileNotFoundException)
             {
                 return false;
             }
-            catch (System.IO.IOException ex2)
+            catch (System.IO.IOException)
             {
                 return true;
             }

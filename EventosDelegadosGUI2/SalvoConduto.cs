@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HealthyCheckpoint
+﻿namespace HealthyCheckpoint
 {
     //Esta classe pertecence ao componente Model
     class SalvoConduto : ISalvoConduto
@@ -21,7 +15,7 @@ namespace HealthyCheckpoint
 
 
         public SalvoConduto(string origem, string destino, int lastIdIssued)
-        {   
+        {
             Id = lastIdIssued + 1;
             Origem = origem;
             Destino = destino;
@@ -67,7 +61,7 @@ namespace HealthyCheckpoint
             return referencia;
         }
 
-        
+
     }
 
     public interface ISalvoConduto

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace HealthyCheckpoint
 {
@@ -30,7 +24,7 @@ namespace HealthyCheckpoint
         {
             model = m;
 
-                       
+
         }
 
         public void ActivarUI()
@@ -77,7 +71,7 @@ namespace HealthyCheckpoint
                 else
                     System.Windows.Forms.MessageBox.Show(String.Format("Origem: {0}\nDestino: {1}\nNÃO VÁLIDO", origem, destino), "Salvo-Conduto NÃO Válido encontrado");
             else
-                System.Windows.Forms.MessageBox.Show(String.Format("A referência {0} não consta no sistema!", referencia),"Salvo-Conduto NÃO encontrado");
+                System.Windows.Forms.MessageBox.Show(String.Format("A referência {0} não consta no sistema!", referencia), "Salvo-Conduto NÃO encontrado");
         }
 
         public void InformarSalvoCondutoCriado(ISalvoConduto salvoConduto)
