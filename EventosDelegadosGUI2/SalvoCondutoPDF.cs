@@ -1,9 +1,12 @@
 ﻿using PdfSharp.Drawing;
+using PdfSharp.Drawing.BarCodes;
 using PdfSharp.Drawing.Layout;
 using PdfSharp.Pdf;
 using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Security.Cryptography;
 
 namespace HealthyCheckpoint
 {
@@ -63,8 +66,14 @@ namespace HealthyCheckpoint
             textFormatterText.DrawString(salvoConduto.Destino, fontText, XBrushes.Black, new XRect(175, 225, page.Width - (175 + 50), 25));
             textFormatterText.DrawString(salvoConduto.Referencia, fontText, XBrushes.Black, new XRect(175, 250, page.Width - (175 + 50), 25));
 
+            //Mudar a font e imprimir o codigo de barras
+            fontText = new XFont("Code 128", 40);
+            textFormatterText.Alignment = (XParagraphAlignment)2;
+            textFormatterText.DrawString(get128Code(salvoConduto.Referencia), fontText, XBrushes.Black, new XRect(50, 425, page.Width-100, 25));
+
             //Voltar à font original e imprimir texto legal
             fontText = new XFont("Arial", 10);
+            textFormatterText.Alignment = (XParagraphAlignment)4;
             textFormatterText.DrawString("Este documento autoriza o seu portador a deslocar-se da localidade indicada em Origem até à localidade indicada em Destino. A qualquer momento este documento poderá ser revogado pelas Entidades Competentes. O portador pode contactar as Entidades Competentes a fim de verificar a validade do Salvo-Conduto, indicando a sua Referência.", fontText, XBrushes.Gray, new XRect(50, 300, page.Width - 100, page.Height - (300 + 50)));
 
             //Imprimir a data e hora em que foi impresso
@@ -77,6 +86,10 @@ namespace HealthyCheckpoint
             fileName = SaveDoc(fileName);
             Debug.WriteLine("fileName depois do SaveDoc: " + fileName);
             System.Diagnostics.Process.Start(fileName);
+
+
+
+            //graphics.DrawBarCode(barcode, XBrushes.Black, new XPoint(50, 50));
         }
 
         public double ResizeHeight(ref XImage image, double newHeightSize) //given an image and a new point height size it returns the new  point width size so that the proportion is not altered
@@ -136,6 +149,30 @@ namespace HealthyCheckpoint
             }
             doc.Save(fileName);
             return (fileName);
+        }
+
+        private string get128Code(string text)
+        {
+            string code;
+            int value = 104;
+            int i = 0;
+            int tmp;
+            char sumcheck;
+            foreach (char letra in text)
+            {
+                i++;
+                tmp = Convert.ToInt32(letra)-32;
+                value += tmp * i;
+            }
+            value %= 103;
+            value += 32;
+            code = "Ì" + text;
+            Debug.WriteLine((char)value);
+            code += ((char)value).ToString();
+            code.Append((char)value);
+            code += "Î";
+            Debug.WriteLine(code);
+            return code;
         }
     }
 }
